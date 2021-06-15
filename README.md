@@ -9,5 +9,5 @@ Catatan : Ada dua folder
 Clone git repositori kedalam folder XAMPP / Web Server.
 
 ````
-git clone https://github.com/firhanhardiansyah/mobile-sems6.git
+git clone https://github.com/firhanhardiansyah/mobile-sems6-api.git
 ````
