@@ -31,13 +31,25 @@ if (isset($_GET['params'])) {
       break;
 
     case 'mhs_view':
-      $mahasiswa = $mhs->view();
-      if (count($mahasiswa) <= 0) {
+      $data = $mhs->view();
+      if (count($data) >= 0) {
         $response['error']    = true;
-        $response['message']  = 'data tidak ditemukan bos';
+        $response['data']     = $data;
       } else {
-        $response['error']  = false;
-        $response['data']   = $mahasiswa;
+        $response['error']    = false;
+        $response['message']  = 'Data tidak ada';
+      }
+      break;
+
+    case 'mhs_delete':
+      $data = $mhs->destroy($_GET['id']);
+
+      if ($data) {
+        $response['error']    = false;
+        $response['message']  = 'Data berhasil dihapus';
+      } else {
+        $response['error']    = true;
+        $response['data']     = $data;
       }
       break;
 

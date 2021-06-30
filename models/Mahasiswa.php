@@ -47,4 +47,20 @@ class Mahasiswa extends Config {
     return $this->data;
 
   }
+
+
+  public function destroy($id)
+  {
+    $this->sql = $this->connect->prepare("DELETE FROM mahasiswa WHERE mahasiswa.mhs_id = $id");
+    $this->sql->execute();
+
+    if ($this->sql) {
+      $result = true;
+    } else {
+      $result = false;
+    }
+
+    return $result;
+
+  }
 }
