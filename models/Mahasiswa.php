@@ -25,6 +25,13 @@ class Mahasiswa extends Config {
     }
   }
 
+  public function update($data)
+  {
+    $this->sql = $this->connect->query("UPDATE `mahasiswa` SET `npm` = '{$data['npm']}', `nama` = '{$data['nama']}', `jenis_kelamin` = '{$data['jenis_kelamin']}', `prodi` = '{$data['prodi']}', `hobi` = '{$data['hobi']}' WHERE `mahasiswa`.`mhs_id` = {$data['mhs_id']}");
+
+    return $this->sql;
+  }
+
   public function view()
   {
     $this->sql = $this->connect->prepare("SELECT * FROM mahasiswa");

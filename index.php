@@ -8,13 +8,19 @@ $response = [];
 if (isset($_GET['params'])) {
   switch ($_GET['params']) {
     case 'mhs_create':
-      if (isset($_GET['npm']) && isset($_GET['nama']) && isset($_GET['jenis_kelamin']) && isset($_GET['prodi']) && isset($_GET['hobi'])) {
+      if (
+        isset($_GET['npm']) && 
+        isset($_GET['nama']) && 
+        isset($_GET['jenis_kelamin']) && 
+        isset($_GET['prodi']) && 
+        isset($_GET['hobi'])
+      ) {
 
         $data = [
-          "npm"             => $_GET['npm'], 
-          "nama"            => $_GET['nama'], 
-          "jenis_kelamin"   => $_GET['jenis_kelamin'], 
-          "prodi"           => $_GET['prodi'], 
+          "npm"             => $_GET['npm'],
+          "nama"            => $_GET['nama'],
+          "jenis_kelamin"   => $_GET['jenis_kelamin'],
+          "prodi"           => $_GET['prodi'],
           "hobi"            => $_GET['hobi']
         ];
         if ($mhs->create($data)) {
@@ -26,7 +32,37 @@ if (isset($_GET['params'])) {
         }
       } else {
         $response['error'] = true;
-        $response['message'] = 'Error, data yang dikirimkan kurang bos';
+        $response['message'] = 'Error';
+      }
+      break;
+
+    case 'mhs_update':
+      if (
+        isset($_GET['mhs_id']) && 
+        isset($_GET['npm']) && 
+        isset($_GET['nama']) && 
+        isset($_GET['jenis_kelamin']) && 
+        isset($_GET['prodi']) && 
+        isset($_GET['hobi'])
+      ) {
+        $data = [
+          "mhs_id"          => $_GET['mhs_id'],
+          "npm"             => $_GET['npm'],
+          "nama"            => $_GET['nama'],
+          "jenis_kelamin"   => $_GET['jenis_kelamin'],
+          "prodi"           => $_GET['prodi'],
+          "hobi"            => $_GET['hobi']
+        ];
+        if ($mhs->update($data)) {
+          $response['error']    = false;
+          $response['message']  = 'Data mahasiswa berhasil diupdate';
+        } else {
+          $response['error'] = true;
+          $response['message'] = 'Data mahasiswa berhasil diupdate';
+        }
+      } else {
+        $response['error'] = true;
+        $response['message'] = 'Error';
       }
       break;
 
