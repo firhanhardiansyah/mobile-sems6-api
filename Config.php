@@ -3,9 +3,9 @@
 class Config {
   private $connect;
   private $db_host      = "localhost";
-  private $db_username  = "id17107881_root";
-  private $db_password  = "0f0SOlR~v(|fUQ>H";
-  private $db_name      = "id17107881_db_api_mobile";
+  private $db_username  = "root";
+  private $db_password  = "";
+  private $db_name      = "db_api_mobile";
 
   public function __construct()
   {
