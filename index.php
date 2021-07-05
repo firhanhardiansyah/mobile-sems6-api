@@ -7,6 +7,24 @@ $response = [];
 
 if (isset($_GET['params'])) {
   switch ($_GET['params']) {
+
+    # ---------------------------------
+    # Menampilkan data mahasiswa
+    # ---------------------------------
+    case 'mhs_view':
+      $data = $mhs->view();
+      if (count($data) >= 0) {
+        $response['error']    = true;
+        $response['data']     = $data;
+      } else {
+        $response['error']    = false;
+        $response['message']  = 'Data tidak ada';
+      }
+      break;
+
+    # ---------------------------------
+    # Membuat data baru mahasiswa
+    # ---------------------------------
     case 'mhs_create':
       if (
         isset($_GET['npm']) && 
@@ -36,6 +54,9 @@ if (isset($_GET['params'])) {
       }
       break;
 
+    # ---------------------------------
+    # Update / Mengubah data mahasiswa
+    # ---------------------------------
     case 'mhs_update':
       if (
         isset($_GET['mhs_id']) && 
@@ -66,17 +87,9 @@ if (isset($_GET['params'])) {
       }
       break;
 
-    case 'mhs_view':
-      $data = $mhs->view();
-      if (count($data) >= 0) {
-        $response['error']    = true;
-        $response['data']     = $data;
-      } else {
-        $response['error']    = false;
-        $response['message']  = 'Data tidak ada';
-      }
-      break;
-
+    # ---------------------------------
+    # Delete data mahasiswa
+    # ---------------------------------
     case 'mhs_delete':
       $data = $mhs->destroy($_GET['id']);
 
