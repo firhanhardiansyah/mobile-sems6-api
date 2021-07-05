@@ -5,7 +5,7 @@ class Config {
   private $db_host      = "localhost";
   private $db_username  = "root";
   private $db_password  = "";
-  private $db_name      = "db_api_mobile";
+  private $db_name      = "db_p_mobile";
 
   public function __construct()
   {
