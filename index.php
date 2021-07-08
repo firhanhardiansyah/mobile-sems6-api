@@ -13,7 +13,7 @@ if (isset($_GET['params'])) {
     # ---------------------------------
     case 'mhs_view':
       $data = $mhs->view();
-      if (count($data) >= 0) {
+      if (count($data) > 0) {
         $response['error']    = true;
         $response['data']     = $data;
       } else {
@@ -41,16 +41,18 @@ if (isset($_GET['params'])) {
           "prodi"           => $_GET['prodi'],
           "hobi"            => $_GET['hobi']
         ];
+
         if ($mhs->create($data)) {
           $response['error']    = false;
           $response['message']  = 'Data mahasiswa berhasil diinput';
         } else {
-          $response['error'] = true;
-          $response['message'] = 'Data mahasiswa berhasil diinput';
+          $response['error']    = true;
+          $response['message']  = 'Data mahasiswa gagal diinput';
         }
+
       } else {
-        $response['error'] = true;
-        $response['message'] = 'Error';
+        $response['error']      = true;
+        $response['message']    = 'Error';
       }
       break;
 
@@ -78,12 +80,12 @@ if (isset($_GET['params'])) {
           $response['error']    = false;
           $response['message']  = 'Data mahasiswa berhasil diupdate';
         } else {
-          $response['error'] = true;
-          $response['message'] = 'Data mahasiswa berhasil diupdate';
+          $response['error']    = true;
+          $response['message']  = 'Data mahasiswa gagal diupdate';
         }
       } else {
-        $response['error'] = true;
-        $response['message'] = 'Error';
+        $response['error']      = true;
+        $response['message']    = 'Error';
       }
       break;
 
